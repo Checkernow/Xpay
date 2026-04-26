@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <title>Demo Crypto Wallet</title>
+
+      <style>
+          body {
+                font-family: Arial;
+                      background: #0f172a;
+                            color: white;
+                                  text-align: center;
+                                        padding: 40px;
+                                            }
+
+                                                button {
+                                                      padding: 10px 20px;
+                                                            margin: 10px;
+                                                                  border: none;
+                                                                        border-radius: 5px;
+                                                                              background: #38bdf8;
+                                                                                    cursor: pointer;
+                                                                                          font-weight: bold;
+                                                                                              }
+
+                                                                                                  textarea {
+                                                                                                        width: 300px;
+                                                                                                              height: 80px;
+                                                                                                                    margin-top: 10px;
+                                                                                                                        }
+
+                                                                                                                            #wallet {
+                                                                                                                                  margin-top: 20px;
+                                                                                                                                        display: none;
+                                                                                                                                            }
+                                                                                                                                              </style>
+                                                                                                                                              </head>
+                                                                                                                                              <body>
+
+                                                                                                                                                <h1>🚀 Demo Wallet</h1>
+
+                                                                                                                                                  <button onclick="createWallet()">Create Wallet</button>
+                                                                                                                                                    <br>
+
+                                                                                                                                                      <textarea id="seed" placeholder="Your seed phrase will appear here..."></textarea>
+                                                                                                                                                        <br>
+
+                                                                                                                                                          <button onclick="loginWallet()">Login with Seed</button>
+
+                                                                                                                                                            <div id="wallet">
+                                                                                                                                                                <h2>Wallet Dashboard</h2>
+                                                                                                                                                                    <p>ETH: <span id="eth"></span></p>
+                                                                                                                                                                        <p>BTC: <span id="btc"></span></p>
+                                                                                                                                                                            <p>USDT: <span id="usdt"></span></p>
+                                                                                                                                                                              </div>
+
+                                                                                                                                                                                <script>
+                                                                                                                                                                                    function generateSeed() {
+                                                                                                                                                                                          const words = [
+                                                                                                                                                                                                  "apple","moon","river","stone","light","crypto",
+                                                                                                                                                                                                          "chain","block","secure","wallet","token","future"
+                                                                                                                                                                                                                ];
+
+                                                                                                                                                                                                                      let seed = "";
+                                                                                                                                                                                                                            for (let i = 0; i < 12; i++) {
+                                                                                                                                                                                                                                    seed += words[Math.floor(Math.random() * words.length)] + " ";
+                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                                return seed.trim();
+                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                        function createWallet() {
+                                                                                                                                                                                                                                                              const seed = generateSeed();
+                                                                                                                                                                                                                                                                    document.getElementById("seed").value = seed;
+
+                                                                                                                                                                                                                                                                          alert("⚠️ Save your seed phrase safely!");
+                                                                                                                                                                                                                                                                              }
+
+                                                                                                                                                                                                                                                                                  function loginWallet() {
+                                                                                                                                                                                                                                                                                        const seed = document.getElementById("seed").value;
+
+                                                                                                                                                                                                                                                                                              if (seed === "") {
+                                                                                                                                                                                                                                                                                                      alert("Enter your seed phrase!");
+                                                                                                                                                                                                                                                                                                              return;
+                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                          // Fake balances (demo only)
+                                                                                                                                                                                                                                                                                                                                document.getElementById("wallet").style.display = "block";
+                                                                                                                                                                                                                                                                                                                                      document.getElementById("eth").innerText = (Math.random() * 2).toFixed(4);
+                                                                                                                                                                                                                                                                                                                                            document.getElementById("btc").innerText = (Math.random() * 0.5).toFixed(4);
+                                                                                                                                                                                                                                                                                                                                                  document.getElementById("usdt").innerText = Math.floor(Math.random() * 1000);
+                                                                                                                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                                                                                                                        </script>
+
+                                                                                                                                                                                                                                                                                                                                                        </body>
+                                                                                                                                                                                                                                                                                                                                                        </html>
